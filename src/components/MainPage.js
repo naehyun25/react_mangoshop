@@ -1,37 +1,30 @@
 import React, {useState, useEffect} from "react";
+import {Link} from "react-router-dom";
 import "./MainPage.css";
 import axios from "axios";
 
 
+
 const MainPage = ()=>{
-    const [products, setProducts] = useState([0]);//반환값이 products 하위 [배열] -> 안의 {객체}
+    const [products, setProducts] = useState([0]);
     
     useEffect(() => {
-        //import 한 axios모듈을 사용해서 데이터 가져오기//똑같은데???
-        const url = "https://dc7726eb-ed09-44d9-9ce5-697822933d54.mock.pstmn.io/products"
-        axios // 비동기 + return 안먹히는데다가 리액트에서 값을바꿀때는 useState를 써야된다.
+        const url = "https://dc7726eb-ed09-44d9-9ce5-697822933d54.mock.pstmn.io/products/"
+        axios 
         .get(url)
         .then((result) => {
-            const products= result.data.products; // 객체를 가져와야지요 ->products 밑에는 배열
+            const products= result.data.products;
             setProducts(products);
         })
         .catch((error) => {
             console.log(error);
         });
-    },[]); // 서버통신은 처음 렌더링될때만 하면 됨. //useEffect 안쓰면 콜백지옥빠짐.. 빠졌었음... 
-    //console.log(products);// then 안의 products 는 그냥 밖으로 못나옴(내보내줘야함) 
-    //여기서는 통신하기전 빈값의 products 임.
-    console.log("나야", products);
+    },[]);
 
 
 
     return(
     <>
-        <div id="header">
-            <div id="header-area">
-                <img src="images/icons/logo.png" alt=""/>
-            </div>
-        </div>
         <div id="body">
             <div id="banner">
                 <img src="images/banners/banner1.png" alt=""/>
@@ -39,31 +32,28 @@ const MainPage = ()=>{
             <h1>Products</h1>
             <div id="product-list">
                 {products.map((product,idx) => {
-                    //console.log(`product:${product.name} idx:${idx}`)
                 return(
-                <div className="product-card">
-                <div>
-                    <img src={product.imageUrl} className="product-img" alt=""/>
-                </div>
-                <div className="product-contents">
-                    <span className="product-name">{product.name}</span>
-                    <span className="product-price">{product.price}</span>
-                    <span className="product-seller">
-                        <img src="images/icons/avatar.png" className="product-avatar" alt=""/>
-                        <span>{product.seller}</span>
-                    </span>
-                </div>
+                <div className="product-card" key={idx}> 
+                {/* key는 react 에서 식별할 수 있는 값으로 고유값->태그의 일련번호(html의 id) */}
+                {/* idx가 필요한데 link로 위에까지 감싸면 idx 값을 사용할 수가 없어서 card 안으로 link 감쌈  */}
+                    <Link className="product-link" to={`./productPage/${product.id}`}> {/* ${idx} => ${product.id }포스트맨에 id 값, 경로 description설계완료해서 바꿔줌 */} 
+                        {/* to={"./products"}=postman의 database 경로  */}
+                        <div>
+                            <img src={product.imageUrl} className="product-img" alt={product.imgalt}/>
+                        </div>
+                        <div className="product-contents">
+                            <span className="product-name">{product.name}</span>
+                            <span className="product-price">{product.price}</span>
+                            <span className="product-seller">
+                                <img src="images/icons/avatar.png" className="product-avatar" alt={product.selleralt}/>
+                                <span>{product.seller}</span>
+                            </span>
+                        </div>
+                    </Link>
             </div>
                 )
                 })}
             </div>
-        </div>
-        <div id="footer">
-            <a href="#">회사소개</a>
-            <a href="#">이용약관</a>
-            <a href="#">통신판매업신고번호:123-7890</a>
-            <a href="#">사업자 등록번호:123-45-67890</a>
-            <a href="#">전화번호:1234-5678</a>
         </div>
     </>
     );
