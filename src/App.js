@@ -1,9 +1,11 @@
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route, Link, useNavigate} from 'react-router-dom';
 import MainPage from './components/MainPage';
 import ProductPage from './components/ProductPage';
 import UploadPage from './components/UploadPage';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import 'antd/dist/reset.css';
+
 
 function App() {
   return (
