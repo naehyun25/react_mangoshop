@@ -27,3 +27,13 @@
 
 #product-description{height:160px;}
 #submit-button{margin-top:20px; border:none; float:right; background:rgb(75, 130, 211); color:white;}
+.product-footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 12px;
+}
+.product-date {
+	font-size: 12px;
+	color: #8a8a8a;
+}

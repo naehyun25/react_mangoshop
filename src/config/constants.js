@@ -1,0 +1,1 @@
+export const API_URL="https://port-0-server-mangoshop-nx562olfdnzpp0.sel3.cloudtype.app";
