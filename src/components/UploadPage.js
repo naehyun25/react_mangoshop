@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Form, Input, Button, Upload, Divider, InputNumber } from "antd";
+import { useNavigate } from "react-router-dom";
+import { Form, Input, Button, Upload, Divider, InputNumber, message } from "antd";
 import "./UploadPage.css";
 import {API_URL} from "../config/constants"
 import axios from "axios";
 const { TextArea } = Input;
 const UploadPage = () => {
 	const [imageUrl, setImageUrl] = useState(null);
+	const [messageApi, contextHolder] = message.useMessage();
+	const info = () => {
+		messageApi.info('Error발생!');
+	  };
+	const navigate = useNavigate();
 	const onFinish = (val) => {
 		axios
             .post(`${API_URL}/products`,{
@@ -13,12 +19,18 @@ const UploadPage = () => {
                 description:val.description,
                 price:val.price,
                 seller:val.seller,
-				imageUrl:val.imageUrl
+				imageUrl:imageUrl
             })
             .then((result)=>{
-                console.log(result)
+                console.log(result);
+				navigate('/',{replace:true}); 
+				//replace:true이거누르면 이전url 저장안되서 뒤로가기 안됌
+				//false는 뒤로가기 됨
             })
-            .catch((error)=>{console.error(error);})
+            .catch((error)=>{
+				console.error(error);
+			
+			})
        
 	};
 	const onChangeImage = (info) => {
@@ -66,12 +78,13 @@ const UploadPage = () => {
 					<TextArea size="large" id="product-description" showCount maxLength={300} placeholder="상품설명을 작성해주세요"></TextArea>
 				</Form.Item>
 				<Form.Item>
-					<Button id="submit-button" htmlType="submit">
+					{contextHolder}
+					<Button id="submit-button" htmlType="submit" onClick={info}>
 						상품등록하기
 					</Button>
 				</Form.Item>
 			</Form>
 		</div>
-	);
+	); 
 };
 export default UploadPage;

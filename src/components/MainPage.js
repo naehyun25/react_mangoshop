@@ -16,6 +16,7 @@ const MainPage = () => {
     .get(url)
     .then((result) => {
       console.log(result);
+      console.log(url)
       const products = result.data.products;
       setProducts(products);
     })
@@ -32,6 +33,7 @@ const MainPage = () => {
         <h1>Products</h1>
         <div id="product-list">
           {products.map((product, idx) => {
+            console.log(product.imageUrl)
             return (
               <div className="product-card" key={idx}>
                 {/* key는 react 에서 식별할 수 있는 값으로 고유값->태그의 일련번호(html의 id) */}
@@ -41,7 +43,7 @@ const MainPage = () => {
                   {/* ${idx} => ${product.id }포스트맨에 id 값, 경로 description설계완료해서 바꿔줌 */}
                   {/* to={"./products"}=postman의 database 경로  */}
                   <div>
-                    <img src={product.imageUrl} className="product-img" alt={product.imgalt} />
+                    <img src={`${API_URL}/${product.imageUrl}`} className="product-img" alt={product.imgalt} />
                   </div>
                   <div className="product-contents">
                     <span className="product-name">{product.name}</span>

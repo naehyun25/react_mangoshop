@@ -29,7 +29,7 @@ const ProductPage = () => {
 		<div>
 			<button onClick={() => navigate(-1)} id="back-btn">이전화면</button>
 			<div id="image-box">
-				<img src={`/${product.imageUrl}`} alt={product.name} />
+				<img src={`${API_URL}/${product.imageUrl}`} alt={product.name} />
 			</div>
 			<div id="profile-box">
 				<img src="/images/icons/avatar.png" alt={product.seller} />
@@ -39,7 +39,7 @@ const ProductPage = () => {
 				<div id="name">{product.name}</div>
 				<div id="price">{product.price}원</div>
 				<div id="createAt">2022.01.15</div>
-				<div id="description">{product.description}</div>
+				<pre id="description">{product.description}</pre>
 			</div>
 		</div>
 	);
