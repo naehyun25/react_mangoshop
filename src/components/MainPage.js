@@ -41,13 +41,13 @@ useEffect(() => {
       <div id="body">
         <Carousel autoplay >
           {banners.map((banner, index)=>{
-            return(<>
+            return(
               <Link to={banner.href} key={banner.id}>
-                <div id="banner" key={banner.id}>
+                <div id="banner">
                   <img src={`${API_URL}/${banner.imageUrl}`} alt="" />
                 </div>
               </Link>
-            </>)
+            )
           })}
         </Carousel>
         <h1>Products</h1>
