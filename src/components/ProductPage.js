@@ -56,7 +56,7 @@ const ProductPage = () => {
         <div id="name">{product.name}</div>
         <div id="price">{product.price}원</div>
         <div id="createAt">2022.01.15</div>
-        <Button size="large" type="primary" danger={true} className="payment" onClick={onClickPurchase}>
+        <Button size="large" type="primary" danger={true} className="payment" onClick={onClickPurchase} disabled={product.soldout===1}>
           즉시 결제하기
         </Button>
         <pre id="description">{product.description}</pre>
