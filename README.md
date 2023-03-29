@@ -6,13 +6,13 @@ a# 프로젝트명(망고샵)
 ## 백엔드 서비스 url
 ## 백엔드 깃허브
 
-
+[react image]:[https://img.shields.io/badge/react-v18-yellowgreen]
 
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
 [![Downloads Stats][npm-downloads]][npm-url]
 
-One to two paragraph statement about your product and what it does.
+gitOne to two paragraph statement about your product and what it does.
 
 ![](https://user-images.githubusercontent.com/120350378/228405247-5d21e015-ec4d-499a-a1f8-140d44ac9877.jpg)
 
