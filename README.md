@@ -1,12 +1,14 @@
 a# 프로젝트명(망고샵)
 > 간략한 프로젝트 소개 문구 작성.
-> PWA 앱으로 제작한 리액트 풀스택 프로젝트입니다.
-> 프론트 리액트를 사용하며 제작해였음 백엔드 노드 베이스
+> PWA 앱으로 제작한 풀스택 프로젝트입니다.
+> 프론트페이지는 리액트를 사용하며 제작하였으며 Node JS의 express 프레임워크를 활용하여 백엔드 서버를 구현하였고
+Sequelize를 사용하여 데이터베이스를 사용했습니다.
 ## 배포 url
 ## 백엔드 서비스 url
 ## 백엔드 깃허브
 
 [react image]:[https://img.shields.io/badge/react-v18-yellowgreen]
+[link]:[]
 
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
